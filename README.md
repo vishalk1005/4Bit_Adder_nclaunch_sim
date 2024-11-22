@@ -47,6 +47,27 @@ COUT=(A&B) | (CIN&(A^B))
 
 Note : File name should be with HDL Extension
 
+## Verilog code for 1 Bit Full adder
+
+```module full_adder(A,B,CIN,S,COUT);
+input A,B,CIN;
+output S,COUT;
+assign S=A^B^CIN;
+assign COUT=(A&B) | (CIN&(A^B));
+endmodule
+```
+## Verilog code for 4 bit full adder:
+
+```module fulladd_4bit(A,B,C0,S,C4);
+input C0,[3:0] A,B;
+output C4,[3:0] S;
+wire C1,C2,C3;
+full_adder fa0 (A[0],B[0],C0,S[0],C1);
+full_adder fa1 (A[1],B[1],C1,S[1],C2);
+full_adder fa2 (A[2],B[2],C2,S[2],C3);
+full_adder fa3 (A[3],B[3],C3,S[3],C4);
+endmodule
+```
 ### a) Verify the Functionality 
 
 	Three Codes shall be written for implementation of 4-bit Adder as follows, 
@@ -91,6 +112,7 @@ or
 	Select Multiple Step and then select “Create cds.lib File” .
 
 	Click the cds.lib file and save the file by clicking on Save option 
+
 ![Screenshot (14)](https://github.com/user-attachments/assets/1011d67a-ba91-4070-88f4-2778f459328d)
 
 ### Fig 5:cds.lib file Creation
@@ -176,12 +198,10 @@ i.e Cadence IES command for compile: ncverilog +access+rwc -compile fa.v
 
 ![Screenshot (17)](https://github.com/user-attachments/assets/1508a32a-92b6-4596-adad-63306b35df16)
 
-### Fig 10: Design Browser window for simulation
-
-### Fig 11: Launching Simulation Waveform WindowSimulation Waveform Window
+### Fig 10: Launching Simulation Waveform WindowSimulation Waveform Window
 ![Screenshot (18)](https://github.com/user-attachments/assets/2999e509-b76b-4697-94cb-c2588a4a05c6)
 
-### Fig 12: Simulation Waveform Window
+### Fig 11: Simulation Waveform Window
 
 
 
